@@ -1,0 +1,6 @@
+---
+# Учебный плейбук — каркас. Задачи добавятся в следующих коммитах.
+- name: WordPress deploy (scaffold)
+  hosts: web
+  become: true
+  tasks: []
