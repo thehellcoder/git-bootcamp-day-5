@@ -40,3 +40,14 @@
       src: php-fpm.conf.j2
       dest: "/etc/php/{{ php_version }}/fpm/pool.d/wordpress.conf"
       notify: Restart php-fpm
+
+  - name: Download WordPress
+    ansible.builtin.get_url:
+      url: "{{ wordpress_download_url }}"
+      dest: /tmp/wordpress.tar.gz
+
+  - name: Deploy wp-config.php
+    ansible.builtin.template:
+      src: wp-config.php.j2
+      dest: /var/www/wordpress/wp-config.php
+      mode: "0640"
